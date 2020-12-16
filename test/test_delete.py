@@ -11,9 +11,13 @@ class TestDeleteMethod(TestBase):
     def test_delete_movie_rating(self):
         # When the delete movie rating request is sent
         response = self.delete_movie_rating(movie_id="500", guest_session_id=self.id)
-        assert response.status_code == 200
+        assert (
+                response.status_code == 200
+        ), "The response should contain status code 200"
 
     def test_delete_movie_rating_message(self):
         # When the delete movie rating request is sent
         response = self.delete_movie_rating(status_code=200, movie_id="500", guest_session_id=self.id)
-        assert response["status_message"] == "The item/record was deleted successfully."
+        assert (
+                response["status_message"] == "The item/record was deleted successfully."
+        ), "The status message should indicate the successful deletion"

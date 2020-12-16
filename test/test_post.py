@@ -23,7 +23,9 @@ class TestPostMethod(TestBase):
         )
 
         # Then the status_message should be "Success."
-        assert response["status_message"] == "Success."
+        assert (
+                response["status_message"] == "Success."
+        ), "The status message should indicate the successful rating"
 
     @pytest.mark.parametrize(
         "value, status_code, status_message",
@@ -42,7 +44,9 @@ class TestPostMethod(TestBase):
             guest_session_id=self.id,
             rate={"value": value}
         )
-        assert response["status_message"] == status_message
+        assert (
+                response["status_message"] == status_message
+        ), f"The response should contain the '{status_message}' status message"
 
     def test_post_rating_update(self):
         movie_id = "577922"
