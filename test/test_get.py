@@ -3,10 +3,10 @@ import pytest
 
 
 class TestGetMethod(TestBase):
-    def test_get_status_code(self, movie_id, status_code):
+    def test_get_status_code(self):
         # When the movie data is retrieved
-        response = self.get_movie_by_id(movie_id=movie_id)
-        assert response.status_code == status_code
+        response = self.get_movie_by_id(movie_id="500")
+        assert response.status_code == 200
 
     @pytest.mark.parametrize(
         "movie_id, title",

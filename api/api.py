@@ -15,26 +15,20 @@ def _request(method, url, query=None, body=None):
         raise Exception(f"Not supported HTTP method: {method}")
 
 
-def get_movie_by_id(movie_id):
+def get_movie_by_id(movie_id, language, append_to_response):
     url = f"{API_URL}/movie/{movie_id}{KEY}"
-    response = _request("get", url)
-    return response
-
-
-def get_movie_popular_list(language, page, region):
-    url = f"{API_URL}/movie/popular{KEY}"
     params = {}
+    if movie_id is not None:
+        params["movie_id"] = movie_id
+
     if language is not None:
         params["language"] = language
 
-    if page is not None:
-        params["page"] = page
+    if append_to_response is not None:
+        params["append_to_response"] = append_to_response
 
-    if region is not None:
-        params["region"] = region
-
-    r = _request("get", url, query=params)
-    return r
+    response = _request("get", url)
+    return response
 
 
 def post_movie_rating(movie_id, rate, guest_session_id):
