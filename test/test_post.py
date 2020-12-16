@@ -44,6 +44,7 @@ class TestPostMethod(TestBase):
             guest_session_id=self.id,
             rate={"value": value}
         )
+        # Then the status message should contain the proper message
         assert (
                 response["status_message"] == status_message
         ), f"The response should contain the '{status_message}' status message"
