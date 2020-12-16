@@ -1,8 +1,10 @@
 from .base import TestBase
 import pytest
+import sys
 
 
 class TestGetMethod(TestBase):
+    @pytest.mark.skipif(sys.version_info < (5, 7), reason="requires python 3.7 or higher")
     def test_get_status_code(self):
         # When the movie data is retrieved
         response = self.get_movie_by_id(movie_id="500")
