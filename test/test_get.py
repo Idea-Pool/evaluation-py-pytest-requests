@@ -33,3 +33,13 @@ class TestGetMethod(TestBase):
         assert (
                 response["title"] == title
         ), f"The '{movie_id}' ID should have the '{title}' title"
+
+    def test_get_without_param(self):
+        # When the movie id is not added to the parameters
+        response = self.get_movie_by_id(
+            movie_id=None
+        )
+        # Then the response should have the proper status code
+        assert (
+                response.status_code == 404
+        ), "The response should contain status code 404"
