@@ -42,3 +42,8 @@
 1. **Given** the {movie_id} is added to the DELETE request
 2. **When** the "DELETE movie rating by id" request is sent
 3. **Then** the response should contain status code 200
+
+## `TC-7` The "DELETE movie rating by id" response should contain the proper status message
+1. **Given** the {movie_id} is added to the DELETE request
+2. **When** the "DELETE movie rating by id" request is sent
+3. **Then** the response should contain the "The item/record was deleted successfully." status message

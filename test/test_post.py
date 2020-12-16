@@ -47,18 +47,3 @@ class TestPostMethod(TestBase):
         assert (
                 response["status_message"] == status_message
         ), f"The response should contain the '{status_message}' status message"
-
-    def test_post_rating_update(self):
-        movie_id = "577922"
-        # When the movie rating is sent
-        response = self.post_movie_rating(
-            status_code=201,
-            movie_id=movie_id,
-            guest_session_id=self.id,
-            rate={"value": 2.0}
-        )
-        assert response["status_message"] == "The item/record was updated successfully."
-
-        movie_by_id = self.get_movie_by_id(movie_id=movie_id)
-        print(movie_by_id)
-
